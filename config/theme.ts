@@ -34,6 +34,25 @@ const theme = createTheme({
   typography: {
     fontFamily: roboto.style.fontFamily,
   },
+  components: {
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#e0e0e0",
+          alignItems: "center",
+          color: "#757575",
+        },
+      },
+    },
+    MuiInputAdornment: {
+      styleOverrides: {
+        root: {
+          alignItems: "center",
+          color: "#757575",
+        },
+      },
+    },
+  },
 });
 
 export default theme;
