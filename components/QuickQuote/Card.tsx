@@ -54,7 +54,7 @@ export function QuickQuoteCard() {
     event.preventDefault();
 
     axios
-      .post("/quotes", quickQuoteFormInput)
+      .post("/api/quotes", quickQuoteFormInput)
       .then((res) => {
         setQuickQuoteFormInput({
           origin: null,
@@ -62,9 +62,9 @@ export function QuickQuoteCard() {
           departDate: null,
           returnDate: null,
           adults: "1",
-          transportation: null,
-          name: null,
-          email: null,
+          transportation: "",
+          name: "",
+          email: "",
         });
       })
       .catch((err) => {
