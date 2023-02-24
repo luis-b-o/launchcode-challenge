@@ -1,4 +1,5 @@
 import { mainListItems, secondaryListItems } from "@/components/ListItems";
+import { QuickQuoteCard } from "@/components/QuickQuote/Card";
 import {
   AccountCircleRounded,
   ChatBubble,
@@ -17,7 +18,6 @@ import MuiDrawer from "@mui/material/Drawer";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
-import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -153,29 +153,7 @@ function DashboardContent() {
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={8} lg={9}>
-              <Paper
-                sx={{
-                  p: 2,
-                  display: "flex",
-                  flexDirection: "column",
-                  height: 240,
-                }}
-              ></Paper>
-            </Grid>
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper
-                sx={{
-                  p: 2,
-                  display: "flex",
-                  flexDirection: "column",
-                  height: 240,
-                }}
-              ></Paper>
-            </Grid>
-            <Grid item xs={12}>
-              <Paper
-                sx={{ p: 2, display: "flex", flexDirection: "column" }}
-              ></Paper>
+              <QuickQuoteCard />
             </Grid>
           </Grid>
         </Container>
@@ -184,6 +162,6 @@ function DashboardContent() {
   );
 }
 
-export default function Dashboard() {
+export function Dashboard() {
   return <DashboardContent />;
 }

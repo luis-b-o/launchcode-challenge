@@ -1,4 +1,4 @@
-import Dashboard from "@/components/LayoutWrapper";
+import { Dashboard } from "@/components/Dashboard";
 
 export default function Home() {
   return <Dashboard />;
