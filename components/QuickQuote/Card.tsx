@@ -17,9 +17,9 @@ export type QuickQuoteFormInput = {
   departDate: string | null;
   returnDate: string | null;
   adults: string;
-  transportation: string | null;
-  name: string | null;
-  email: string | null;
+  transportation: string;
+  name: string;
+  email: string;
 };
 
 export function QuickQuoteCard() {
@@ -30,9 +30,9 @@ export function QuickQuoteCard() {
       departDate: null,
       returnDate: null,
       adults: "1",
-      transportation: null,
-      name: null,
-      email: null,
+      transportation: "",
+      name: "",
+      email: "",
     });
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,6 +56,7 @@ export function QuickQuoteCard() {
     axios
       .post("/api/quotes", quickQuoteFormInput)
       .then((res) => {
+        // TODO: Handle error feedback
         setQuickQuoteFormInput({
           origin: null,
           destination: null,
