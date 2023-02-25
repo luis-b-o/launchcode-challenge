@@ -1,38 +1,98 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Wet Bat - Quotation MVP
+
+This is a **fullstack MVP project** made in **TypeScript** with **[Next.js](https://nextjs.org/)**. The main objective is create a **quotation feature** to a travel agency with a dashboard layout using **[Material UI](https://mui.com/)**.
+
+## Technology decisions
+
+This section will briefly explain the reasons why i chose some technologies.
+
+### [Typescript](https://www.typescriptlang.org/)
+
+Superset of javascript that provide code typing and integrate with most code editors, preventing early errors, improving speed and security of all features.
+
+- Auto-complete;
+- Code editor check;
+- Security;
+- Widely used;
+
+### [Next.js](https://nextjs.org/)
+
+This framework is most recognized for its server-side rendering and its advantages with SEO, but those are not the main features that interest me.
+
+I chose because it is very efficient for making a quick app (both to development and for the end user to use).
+
+Strong points on this decision:
+
+- Nested pages routing, based on the file-system;
+- API routes -> easy to build API's for fullstack apps;
+- Fast and easy deployment on vercel;
+- Active community;
+- Good documentation;
+
+### [Material UI](https://mui.com/)
+
+UI library that provide multiple styled React components.
+
+- Ready for use components;
+- Customization;
+- Good documentation;
+- Responsivity;
+
+### [Prisma](https://www.prisma.io/)
+
+Node.js ORM library that streamlines database administration inside the typescript code.
+
+- Fast databasec creation;
+- Automated migrations;
+- Intuitive database tables schema
+- Type-safety;
+- Auto completion;
 
 ## Getting Started
 
-First, run the development server:
+### 1. Download and install dependencies
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Clone this repository:
+
+```
+git clone https://github.com/luis-b-o/launchcode-challenge.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install dependencies:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+cd launchcode-challenge
+yarn install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### 2. Configure .env
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+For local development you can use the `.env.example`. Run the following command to make a copy of it and name to `.env`:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+cp .env.example .env
+```
 
-## Learn More
+### 3. Create and seed the database
 
-To learn more about Next.js, take a look at the following resources:
+If you're using Docker on your computer, the following script to set up PostgreSQL database using the `docker-compose.yml` file at the root of your project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+yarn db:up
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Run the following command to create your PostgreSQL database. This also creates the `Quote` table that are defined in [`prisma/schema.prisma`](./prisma/schema.prisma):
 
-## Deploy on Vercel
+```
+npx prisma migrate dev --name init
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+When `npx prisma migrate dev` is executed against a newly created database, seeding is also triggered. The seed file in [`prisma/seed.ts`](./prisma/seed.ts) will be executed and your database will be populated with the sample data.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 4. Start the app
+
+```
+yarn dev
+```
+
+The app is now running, navigate to [`http://localhost:3000/`](http://localhost:3000/) in your browser to explore its UI.
