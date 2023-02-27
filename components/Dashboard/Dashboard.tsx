@@ -1,5 +1,5 @@
 import { mainListItems, secondaryListItems } from "@/components/ListItems";
-import { QuickQuoteCard } from "@/components/QuickQuote/Card";
+import { QuickQuoteForm } from "@/components/QuickQuote/Form";
 import {
   AccountCircleRounded,
   ChatBubble,
@@ -153,7 +153,7 @@ function DashboardContent() {
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={8} lg={9}>
-              <QuickQuoteCard />
+              <QuickQuoteForm />
             </Grid>
           </Grid>
         </Container>

@@ -1,10 +1,7 @@
+import { DashboardCard } from "@/components/Dashboard/Card";
 import { CountryAirportsList } from "@/utils/CountryAirportsList";
-import { FastForwardOutlined, OpenInFull } from "@mui/icons-material";
-import { Autocomplete, Button, Divider, Grid, TextField } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import IconButton from "@mui/material/IconButton";
+import { FastForwardOutlined } from "@mui/icons-material";
+import { Autocomplete, Button, Grid, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -22,7 +19,7 @@ export type QuickQuoteFormInput = {
   email: string;
 };
 
-export function QuickQuoteCard() {
+export function QuickQuoteForm() {
   const [quickQuoteFormInput, setQuickQuoteFormInput] =
     useState<QuickQuoteFormInput>({
       origin: null,
@@ -75,33 +72,12 @@ export function QuickQuoteCard() {
   };
 
   return (
-    <Card>
-      <CardHeader
-        action={
-          <IconButton aria-label="expand">
-            <OpenInFull
-              sx={(theme) => ({
-                color: theme.palette.grey[400],
-              })}
-            />
-          </IconButton>
-        }
-        title={
-          <Typography
-            variant="h6"
-            sx={(theme) => ({
-              color: theme.palette.grey[600],
-              fontWeight: 400,
-            })}
-          >
-            Quick Quote
-          </Typography>
-        }
-        avatar={<FastForwardOutlined sx={{ fontSize: 35 }} color="secondary" />}
-      />
-
-      <Divider />
-      <CardContent>
+    <DashboardCard
+      header={{
+        avatar: <FastForwardOutlined sx={{ fontSize: 35 }} color="secondary" />,
+        text: "Quick Quote",
+      }}
+      content={
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2} direction="row" justifyContent="center">
             <Grid item xs={12} md={6}>
@@ -273,7 +249,7 @@ export function QuickQuoteCard() {
             </Grid>
           </Grid>
         </form>
-      </CardContent>
-    </Card>
+      }
+    />
   );
 }
