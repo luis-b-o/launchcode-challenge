@@ -1,13 +1,9 @@
 import { prisma } from "@/lib/prisma";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-type Data = {
-  id: string;
-};
-
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse
 ) {
   if (req.method === "POST") {
     const {
@@ -35,6 +31,21 @@ export default async function handler(
     });
 
     return res.status(200).json({ id: quote.id });
+  } else if (req.method === "GET") {
+    const { limit } = req.query;
+    const response = await prisma.quote.findMany({
+      select: {
+        id: true,
+        name: true,
+        destination: true,
+      },
+      take: Number(limit),
+      orderBy: {
+        updatedAt: "desc",
+      },
+    });
+
+    return res.status(200).json({ quotes: response });
   } else {
     throw new Error(
       `The HTTP ${req.method} method is not supported at this route.`
