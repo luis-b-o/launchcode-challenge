@@ -13,7 +13,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Home" />
     </ListItemButton>
-    <ListItemButton LinkComponent={Link} href="/quote">
+    <ListItemButton LinkComponent={Link} href="/">
       <ListItemIcon>
         <AttachMoneyRounded />
       </ListItemIcon>
