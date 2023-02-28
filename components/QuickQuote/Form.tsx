@@ -53,7 +53,6 @@ export function QuickQuoteForm() {
     axios
       .post("/api/quotes", quickQuoteFormInput)
       .then((res) => {
-        // TODO: Handle error feedback
         setQuickQuoteFormInput({
           origin: null,
           destination: null,

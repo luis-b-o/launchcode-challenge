@@ -1,4 +1,4 @@
-import { OpenInFull } from "@mui/icons-material";
+import { OpenInFull, Restore } from "@mui/icons-material";
 import {
   Card,
   CardContent,
@@ -13,6 +13,7 @@ export type DashboardCardProps = {
     text: string;
     avatar: JSX.Element;
     openInFull?: boolean;
+    reloadContent?: () => void;
   };
   content: JSX.Element;
 };
@@ -22,15 +23,26 @@ export function DashboardCard({ header, content }: DashboardCardProps) {
     <Card>
       <CardHeader
         action={
-          header.openInFull && (
-            <IconButton aria-label="expand">
-              <OpenInFull
-                sx={(theme) => ({
-                  color: theme.palette.grey[400],
-                })}
-              />
-            </IconButton>
-          )
+          <>
+            {header.openInFull && (
+              <IconButton aria-label="expand">
+                <OpenInFull
+                  sx={(theme) => ({
+                    color: theme.palette.grey[400],
+                  })}
+                />
+              </IconButton>
+            )}{" "}
+            {header.reloadContent && (
+              <IconButton aria-label="expand" onClick={header.reloadContent}>
+                <Restore
+                  sx={(theme) => ({
+                    color: theme.palette.grey[400],
+                  })}
+                />
+              </IconButton>
+            )}
+          </>
         }
         title={
           <Typography

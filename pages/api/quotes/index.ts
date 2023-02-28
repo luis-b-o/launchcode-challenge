@@ -38,10 +38,11 @@ export default async function handler(
         id: true,
         name: true,
         destination: true,
+        amount: true,
       },
       take: Number(limit),
       orderBy: {
-        updatedAt: "desc",
+        amount: "desc",
       },
     });
 
